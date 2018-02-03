@@ -1,0 +1,60 @@
+\documentclass{article}
+
+%% Language and font encodings
+\usepackage[utf8x]{inputenc}
+\usepackage{polski}
+\usepackage{hyperref}
+\usepackage{dirtytalk}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{Od Anzelma do Gödla - dowód ontologiczny a logika modalna.}
+\author{Artur M. Brodzki}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	W 1078 roku, Anzelm z Canterbury opublikował \emph{Proslogion}, w którym zawarł dowód na istnienie Boga oparty tylko i wyłącznie o definicję atrybutów boskości, znany powszechnie jako dowód ontologiczny. Jakkolwiek dowód Anzelma został odrzucony przez średniowieczną scholastykę po krytyce ze strony Gaunilona, nieoczekiwanie sformalizował go na gruncie nowoczesnej matematyki  Kurt Gödel. Jakkolwiek oryginalny zestaw aksjomatów Gödla okazał się być wewnętrznie sprzeczny i prowadził do zjawiska modalnego kolapsu, Curtis Anderson zmodyfikował pierwotną wersję, co pozwoliło na uniknięcie sprzeczności. Trwają wysiłki mające na celu sformalizowanie dowodu ontologicznego w postaci umożliwiającej jego weryfikację za pomocą środków automatycznego dowodzenia twierdzeń, jak Isabelle czy Coq. Niezależnie od formalnej poprawności dowodu, trwają dyskusje na temat interpretacji uzyskanych wyników. Ponieważ przyjęta przez Gödla aksjomatyzacja pojęcia dobra i zła nie jest jednoznacznie określona, powstają pytania o dokładną tożsamość Boga, którego istnienia dowodzi dowód ontologiczny - jak i o możliwości uniknięcia tej wieloznaczności. 
+\end{abstract}
+
+\section{Wstęp} \label{sec:intro}
+
+\subsection{Rola języka w dyskusji} \label{sec:language}
+
+Rozmowa i dialog wymagają zawsze na początku ustalenia wspólnego dla rozmówców języka. Język to symboliczna reprezentacja świata materialnego. Symbolom języka - głoskom, słowom i zdaniom odpowiadają obiekty, procesy czy stany świata, o którym ten język mówi. Można powiedzieć, że z matematycznego punktu widzenia język i jego interpretacja tworzą - przynajmniej powinny tworzyć - bijekcję, czyli odwzorowanie wzajemnie jednoznaczne. Gdy obaj rozmówcy posługują się w dyskusji tą samą bijekcją, wówczas rozmowa spełnia swoją rolę komunikacyjną i pozwala na wymianę myśli. Języki zwykle wyróżniamy nieco demograficznie: mówimy o języku polskim, niemieckim, białoruskim, chińskim - i zakładamy, że dwie osoby posługujące się "tym samym" językiem np. polskim, są w stanie wzajemnie się porozumieć, bo posługują się tymi samymi słowami. O tym, jak bardzo jest to błędne założenie, przekonać się można śledząc dyskusje i spory toczące się na forach i portalach internetowych. Uważna lektura tych rozmów pokazuje, że bardzo często długie i nieraz emocjonalne spory wynikają głównie z innej interpretacji tych samych wyrazów. Dopóki rozmówcy nie zauważą, że tych samych słów używają w zupełnie innych znaczeniach, jakiekolwiek porozumienie ani w ogóle racjonalna dyskusja po prostu nie jest możliwa. 
+
+Jest to o tyle ciekawe, że zjawisko to jest powszechnie niedoceniane, często niemal niezauważane, tymczasem jego występowanie powinno być oczywiste, biorąc pod uwagę proces uczenia się języka przez ludzi. Języka uczymy się jako kilkuletnie dzieci, obserwując i słuchając dorosłych posługujących się mową. Dziecko poznaje znaczenie słów - czyli wytwarza w swoim umyśle tę bijekcję, o której była mowa - poprzez zapamiętywanie i uogólnianie osobistych doświadczeń. Niektóre słowa opisują konkretne, rzeczywiste obiekty jak stół, samochód czy pies - i ich znaczenie łatwo jest jednoznacznie ustalić. Niektóre jednak są bardziej abstrakcyjne, a często niedookreślone ze znaczeniem zależnym od kontekstu. Dotyczy to pojęć takich jak dobro, zło, wina, przyczyna, odpowiedzialność \footnote{Różne pojmowanie znaczenia tego ostatniego słowa uwidacznia się szczególnie często w dyskusjach na temat przemocy seksualnej. }. Te pojęcia należą do najczęściej wykorzystywanych, a przy tym (być może właśnie dlatego )najbardziej wieloznacznych i kontekstowych. Trudno oczekiwać, że każdy z 7 miliardów ludzi wytworzy w swoim umyśle dokładnie te same ich interpretacje, obserwując jedynie codzienne sytuacje i interakcje dorosłych w swoim rodzinnym domu. Właściwie można pokusić się o stwierdzenie, że w pewnym zakresie każdy człowiek posiada i tworzy swój własny, indywidualny język, niepodobny i nie do końca kompatybilny z językiem jakiejkolwiek innej osoby na świecie. 
+
+\subsection{Spory o definicję i racjonalność pojęcia Boga. } \label{sec:god-def}
+
+Problem języka nie ominął nauki, filozofii i religii, a może nawet w tych właśnie dziedzinach uwidocznił się szczególnie mocno. Niektórzy wręcz twierdzą za Wittgensteinem, że wszystkie wielkie i nierozwiązane spory filozofii jak problem uniwersaliów stanowią jedynie pewne gry językowe i wynikają z niedoprecyzowania stosowanych pojęć jak i samego pytania. Inni jednak (jak Popper) odrzucają tak radykalny pogląd. Niezależnie od tego, ustalenie wspólnych definicji podstawowych pojęć stanowi warunek racjonalnej dyskusji. 
+
+Tak właśnie jest z niezwykle pojemnym i zmiennym pojęciem - czy obrazem - Boga. Dla starożytnych, potrzeba poznania Boga, czy częściej bogów, wynikała zazwyczaj z doświadczenia własnej słabości i kruchości wobec sił natury. Bogowie odpowiadali najgroźniejszym albo najbardziej zmiennym zjawisko, jak Słońce, morze czy dzikie zwierzęta. Do bogów modlono się w celu ich przebłagania, a relacja człowieka i bóstwa miała charakter myślenia magicznego i zaklęć mających dać człowiekowi kontrolę nad otoczeniem. Rolą figury boga było zmniejszenie lęku wynikającego z doświadczanego niebezpieczeństwa. 
+
+Obraz bogów ulegał jednak z czasem sublimacji. Bogowie zaczęli reprezentować nie tylko zagrożenia, ale również idee i cnoty: grecka Atena odpowiadała za wiedzę i mądrość, 9 muz za piękno i sztukę. Dalszej modyfikacji dokonali greccy filozofowie: Sokrates zakwestionował niepodważalną prawdziwość mitologii bogów olimpijskich, Platon natomiast rozważał boskość w odniesieniu do swojej teorii Idei. Idee były bytami wyższymi i doskonalszymi niż świat materialny, a spośród idei najwyższa była Forma Dobra: doskonała wiedza i prawda, określająca granicę pomiędzy dobrem a złem, pierwsza przyczyna, dla której istnieją wszystkie pozostałe Idee i byty. Późniejsi filozofowie krytykowali platońską wersję Idei Dobra jako zbyt abstrakcyjną lub zbyt ogólną, niemniej pozostała ona znana i wywierała wpływ na myśl późniejszą, w tym szczególnie na teologię chrześcijańską. 
+
+W chrześcijaństwie Bóg jest przede wszystkim stwórcą wszechświata, jako jedyny posiada zdolność stwarzania bytów z nicości, tzw. \emph{creatio ex nihilo}. Jest również najwyższym (a często, np. u Augustyna - jedynym) dobrem i celem wszelkiego istnienia. W tym sensie można go utożsamiać z platońską Formą Dobra i taką interpretację przyjmowała część chrześcijańskich filozofów i teologów. Podobne podejście przyjął Anzelm, biskup Canterbury, kiedy tworzył swój dowód ontologiczny istnienia Boga; omówimy go szczegółowo w rozdziale \ref{sec:anzelm}. Oprócz pojmowania Boga jako stworzyciela i wyznacznika moralnego dobra, Bóg jest pierwszą przyczyną istnienia świata. Jako taki występuje u Tomasza z Akwinu oraz u Gottfrieda Leibniza, który ubrał ten pogląd w często powtarzaną maksymę \say{dlaczego istnieje raczej coś niż nic}. 
+
+To ostatnie podejście jest szczególnie interesujące z punktu widzenia relacji pomiędzy Bogiem czy religią w ogólności a współczesną nauką. Metoda naukowa przyjmuje jako podstawę zbiór założeń określanych jako metodologiczny naturalizm. W skrócie, składa się on z następujących twierdzeń:
+
+\begin{enumerate}
+	\item \label{metodological:start} Istnieje obiektywna rzeczywistość zewnętrzna, której obraz jest współdzielony przez wszystkich obserwatorów. Świat nie jest jedynie wytworem ludzkiego umysłu (solipsyzm). 
+	\item Świat podlega stałym, niezmiennym w czasie i przestrzeni zasadom znanym jako \emph{prawa przyrody}. 
+	\item Prawa przyrody wyjaśniają kształt wszystkich zjawisk. 
+	\item Ponieważ prawa przyrody są niezmienne w czasie i przestrzeni, rządzone nimi zjawiska zachowują się w sposób powtarzalny. 
+	\item \label{metodological:end} Dzięki temu, można odkrywać kształt tych praw za pomocą metody eksperymentalnej. 
+\end{enumerate}
+
+Naturalizm metodologiczny jest założeniem, na którym opiera się metoda nauk przyrodniczych i jednocześnie wyjaśnia przyczynę skuteczności metody naukowej w poznawaniu świata. Naturalizm wyznacza jednak również dla niej granicę stosowalności: hipotetyczne zjawiska, które nie spełniają jednego z powyższych założeń (np. nie są powtarzalne w zadanych warunkach) nie dają się badać za pomocą metody naukowej.
+
+Naturalizm bywa jednak interpretowany nie jako założenie wyznaczające granicę metody naukowej, ale jako fakt dotyczący całej rzeczywistości. W tej wersji, którą nazywał będę naturalizmem filozoficznym, za prawdziwe uznaje się jedynie zjawiska, które da się zbadać i udowodnić za pomocą metody naukowej. Zjawiska nie spełniające potencjalnie założeń \ref{metodological:start} - \ref{metodological:end} odrzuca się jako nieprawdziwe z definicji \footnote{A przynajmniej traktuje się je jako zjawiska, o których nie da się racjonalnie dyskutować, bo są niepoznawalne - zgodnie z radykalną interpretacją zasady brzytwy Ockhama}. Tak rozumiany naturalizm stanowi podstawę tzw. \emph{nowego ateizmu}, reprezentowanego głównie przez tzw. Czterech Jeźdźców: Richarda Dawkinsa, Daniela Dennetta, Sama Harrisa, Christophera Hitchhensa. 
+
+Takie podejście nie wydaje się jednak autorowi przekonujące. Założenia \ref{metodological:start} - \ref{metodological:end} mogą być postrzegane jako dość oczywiste i w zdecydowanej większości sytuacji okazują się skuteczne - mają jednak charakter właściwie metafizyczny i są niedowodliwe na gruncie samej metody naukowej. Jest to szczególny przypadek problemów doświadczanych wcześniej przez pozytywizm: po zastosowaniu pozytywistycznych kryteriów prawdy do do samego pozytywizmu, okazuje się, że pozytywizm sam wyprowadza swoją własną fałszywość. Jeżeli więc pozytywizm i jego pochodne były sposobem na ucieczkę od wszelkiej metafizyki postrzeganej jako nieracjonalna, to próba ta udowodniła, że od wszelkiej metafizyki uciec się nie da. A skoro tak, to zasadne jest zadawanie metafizycznych pytań i szukanie odpowiedzi - i traktowanie tych pytań jako racjonalnych. 
+
+
+
+
+\end{document}
