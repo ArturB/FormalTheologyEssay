@@ -8,7 +8,13 @@
 
 %% Useful packages
 \usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
 \usepackage[colorinlistoftodos]{todonotes}
+
+\newtheorem{theorem}{Twierdzenie}
+\newtheorem{definition}{Definicja}
+\newtheorem{axiom}{Aksjomat}
 
 \title{Od Anzelma do Gödla - dowód ontologiczny a logika modalna.}
 \author{Artur M. Brodzki}
@@ -52,8 +58,101 @@ Naturalizm metodologiczny jest założeniem, na którym opiera się metoda nauk 
 
 Naturalizm bywa jednak interpretowany nie jako założenie wyznaczające granicę metody naukowej, ale jako fakt dotyczący całej rzeczywistości. W tej wersji, którą nazywał będę naturalizmem filozoficznym, za prawdziwe uznaje się jedynie zjawiska, które da się zbadać i udowodnić za pomocą metody naukowej. Zjawiska nie spełniające potencjalnie założeń \ref{metodological:start} - \ref{metodological:end} odrzuca się jako nieprawdziwe z definicji \footnote{A przynajmniej traktuje się je jako zjawiska, o których nie da się racjonalnie dyskutować, bo są niepoznawalne - zgodnie z radykalną interpretacją zasady brzytwy Ockhama}. Tak rozumiany naturalizm stanowi podstawę tzw. \emph{nowego ateizmu}, reprezentowanego głównie przez tzw. Czterech Jeźdźców: Richarda Dawkinsa, Daniela Dennetta, Sama Harrisa, Christophera Hitchhensa. 
 
-Takie podejście nie wydaje się jednak autorowi przekonujące. Założenia \ref{metodological:start} - \ref{metodological:end} mogą być postrzegane jako dość oczywiste i w zdecydowanej większości sytuacji okazują się skuteczne - mają jednak charakter właściwie metafizyczny i są niedowodliwe na gruncie samej metody naukowej. Jest to szczególny przypadek problemów doświadczanych wcześniej przez pozytywizm: po zastosowaniu pozytywistycznych kryteriów prawdy do do samego pozytywizmu, okazuje się, że pozytywizm sam wyprowadza swoją własną fałszywość. Jeżeli więc pozytywizm i jego pochodne były sposobem na ucieczkę od wszelkiej metafizyki postrzeganej jako nieracjonalna, to próba ta udowodniła, że od wszelkiej metafizyki uciec się nie da. A skoro tak, to zasadne jest zadawanie metafizycznych pytań i szukanie odpowiedzi - i traktowanie tych pytań jako racjonalnych. 
+Takie podejście nie wydaje się jednak autorowi przekonujące. Założenia \ref{metodological:start} - \ref{metodological:end} mogą być postrzegane jako dość oczywiste i w zdecydowanej większości sytuacji okazują się skuteczne - mają jednak charakter właściwie metafizyczny i są niedowodliwe na gruncie samej metody naukowej. Tak restrykcyjne kryteria prawdziwości okazują się być sprzeczne ze sobą. Jest to szczególny przypadek problemów doświadczanych wcześniej przez pozytywizm: po zastosowaniu pozytywistycznych kryteriów prawdy do samego pozytywizmu, okazuje się, że pozytywizm sam wyprowadza swoją własną fałszywość. Jeżeli więc pozytywizm i jego pochodne były sposobem na ucieczkę od wszelkiej metafizyki postrzeganej jako nieracjonalna, to próba ta udowodniła, że od wszelkiej metafizyki uciec się nie da. A skoro tak, to zasadne jest zadawanie metafizycznych pytań i szukanie odpowiedzi - i traktowanie tych pytań jako racjonalnych. Racjonalne jest pytanie o istnienie Boga i racjonalna jest analiza logiczna dowodów mających istnienie Boga uzasadniać. Tutaj skupimy się na dowodzie ontologicznym Anzelma, który został sformalizowany na gruncie nowoczesnej matematyki - konkretnie logiki modalnej - przez Kurta Gödla. 
 
+W następnym rozdziale opiszę dokładniej strukturę oryginalnego dowodu Anzelma oraz jego średniowieczną krytykę. Rozdział \ref{sec:modal-logic} wprowadza podstawy logiki modalnej jako teorii matematycznej, a w rozdziale \ref{sec:godel-proof} omówię dowód wprowadzony przez Kurta Gödla, a w \ref{sec:anderson-proof} - jego wady oraz dalsze modyfikacje. 
+
+\section{Dowód Anzelma} \label{sec:anzelm}
+
+Autorem dowodu ontologicznego jest biskup Anzelm z Canterbury, który opublikował go po raz pierwszy w 1078 roku w \emph{Proslogionie}. Argument Anzelma kształtował się w tle sporu, który szczególnie gorąco zajmował średniowiecznych teologów: sporu o uniwersalia. 
+
+Spór ten rozpoczął się dla średniowiecznej filozofii w zasadzie od Boecjusza, który przetłumaczył na łacinę księgi Porfiriusza, greckiego filozofa z przełomu III w IV wieku naszej ery. Porfiriusz, jako neoplatończyk, rozważał teorię form, zadając do niej dwa fundamentalne pytania:
+\begin{itemize}
+	\item Czy platońskie idee - uniwersalia - istnieją tylko w umyśle, jako wytwory ludzkiej myśli, czy też istnieją realnie - niezależnie od umysłu?
+	\item Jeśli istnieją realnie, to czy są bytem fizycznym i jak są powiązane z konkretnymi obiektami fizycznymi, które reprezentują?
+\end{itemize}
+
+Spór nie został ostatecznie rozwiązany w średniowieczu, a w różnych odmianach toczy się w filozofii do dzisiaj. W takiej atmosferze pracował i pisał Anzelm: tworząc swój dowód, chciał odnieść się do zarzutu, że idea Boga została stworzona przez człowieka i istnieje tylko i wyłącznie w jego ułomnym umyśle. Bardzo przewidująco zresztą postąpił, bo przecież podobne zarzuty pojawiają się wobec teizmu do dzisiaj. 
+
+Kolejną istotną cechą dowodu Anzelma jest to, że z zaskakującą konsekwencją korzysta z myślenia opartego na wnioskowaniu z przyjętych na początku aksjomatów. Taki sposób myślenia stanowi dzisiaj podstawę wszelkiej matematyki; to właśnie aksjomatyczna struktura dowodu Anzelma przesądziła o tym, że tak łatwo daje się on przenieść na grunt nowoczesnej nauki. Niezależnie od ostatecznej oceny prawdziwości dowodu ontologicznego, w opinii autora pozostaje on jedną z najbardziej ponadczasowych konstrukcji myślowych stworzonych przez średniowieczną scholastykę. 
+
+Anzelm zaczyna swój dowód od uściślenia samego pojęcia boskości. Najpierw jednak czyni pewne założenia wstępne: 
+
+\begin{axiom} \label{axiom:1}
+	Wszystkim istniejącym bytom można przypisać cechę \emph{doskonałości}. Różne byty posiadają cechę doskonałości w róznym stopniu. 
+\end{axiom}
+
+Doskonałość można tutaj rozumieć w sensie moralnym, jak i jako piękno czy użyteczność. Dokładny sposób wartościowania obiektów pod względem tej cechy nie jest jednak dla Anzelma istotny; ważny dla dowodu ontologicznego okazuje się jedynie kolejny aksjomat:
+
+\begin{axiom} \label{axiom:2}
+	Byt istniejący obiektywnie jest bardziej doskonały, niż identyczny byt, ale istniejący tylko w ludzkim umyśle. 
+\end{axiom}
+
+Aksjomat \ref{axiom:2} pozwala na ustanowienie pewnej hierarchii bytów, dzieląc je na mniej lub bardziej doskonałe. Mając już ustalony pewien aparat pojęciowy, mógł Anzelm przystąpić do zdefiniowania samego pojęcia Boga:
+
+\begin{definition} \label{def:god}
+	Bóg jest to byt, od którego nie ma (wręcz nie można sobie wyobrazić) żadnego bytu bardziej doskonałego. 
+\end{definition}
+
+Na bazie podanej przez siebie definicji, daje się już udowodnić twierdzenie o tym, że Bóg istnieje:
+
+\begin{theorem} \label{theorem:god}
+	Bóg jest bytem istniejącym realnie, poza ludzkim umysłem. 
+\end{theorem}
+
+\begin{proof}
+	Dowód twierdzenia odbywa się jako dowód przez zaprzeczenie. Załóżmy, że Bóg istnieje tylko jako wytwór myśli człowieka. Wynika z tego, że nie jest to idea najdoskonalsza ze wszystkich, można bowiem wyobrazić sobie Boga bardziej doskonałego: takiego, który istnieje w realnej rzeczywistości. Wniosek ten jest jednak sprzeczny z definicją \ref{def:god}, zgodnie z którą nie ma żadnej doskonalszej od Boga idei. Uznając założenie początkowe za prawdziwe, otrzymujemy sprzeczność - a zatem Bóg musi być bytem istniejącym realnie. 
+\end{proof}
+	
+Dowód Anzelma, jakkolwiek niezwykle wyrafinowany w formie, spotkał się z krytyką i to niemal natychmiast po opublikowaniu. Najwyżej 5 lat po wydaniu \emph{Proslogionu} \footnote{Gaunilon zmarł w 1083 roku.}, pojawiła się krótka rozprawka Gaunilona, benedyktyna z Marmoutier, zatytułowana \emph{W obronie głupiego}. W rozprawce tej Gaunilon zwraca uwagę na fakt, że korzystając z metody Anzelma udowodnić można niepokojąco wiele i podaje sławny do dziś przykład idealnej wyspy. Jeżeli - jak twierdzi Anzelm - byt istniejący realnie jest z definicji bardziej doskonały od istniejącego w umyśle, to istnieć musi gdzieś na świecie idealna, pozbawiona jakichkolwiek wad wyspa - raj. Taka wyspa posiadać musi bowiem wszystkie możliwe dla wysp przymioty, w szczególności zaś nie może jej brakować Anzelmowskiego przymiotu realnego istnienia. Rozumowanie to można rozciągnąć na bardzo wiele teologicznie niepożądanych bytów: herosów czy konkurujących z chrześcijańskim Bogiem półbogów, którzy nie posiadają wszystkich możliwych zalet, nie brakuje im jednak cechy realnego istnienia. 
+
+Krytyka Gaunilona została powszechnie zaakceptowana a sam dowód ontologiczny był przez scholastykę zazwyczaj odrzucany, a czasem nawet postrzegany jako przejaw pewnej pychy ludzkiego rozumu, który rości sobie prawo do poznania natury i istoty Boga. Niespodziewanie zyskał jednak ponowne zainteresowanie po jego przeformułowaniu przez Kurta Gödla w języku logiki modalnej. Gödlowski dowód pojawia się po raz pierwszy w jego osobistych zapiskach, datowanych na rok 1941, on sam jednak nie wspomniał o nim nikomu aż do 1970 roku. Wspomnienia Oskara Morgensterna sugerują, że Gödel zwlekał z publikowaniem swoich wyników ze względów kulturowych. Prace na ten temat przekazał jednak w 1970 roku Dana Scottowi \footnote{Dana Scott pozostaje znany w środowisku informatyków głównie z prac dotyczących semantyki języków programowania, które posłużyły później w budowie nowoczesnych języków programowania funkcyjnego, a zwłaszcza Haskella} i ostatecznie zostały one opublikowane z 1987 roku, w 9 lat po jego śmierci. 
+
+\section{Logika modalna}
+
+Aby omówić dowód Gödla w szczegółach, musimy jednak najpierw zapoznać się nieco z podstawami logiki modalnej, w której Gödel zapisał swój dowód ontologiczny. Logika modalna należy do logik nieklasycznych, tzn. różni się od rachunku zdań wprowadzonego do europejskiej nauki jeszcze przed Arystotelesa w jego sześciotomowym \emph{Organonie}. Logika modalna wprowadza do rachunku zdań dwa dodatkowe spójniki, tzw. spójniki modalne:
+\begin{enumerate}
+	\item Spójnik możliwości $\diamondsuit$
+	\item Spójnik konieczności $\Box$
+\end{enumerate}
+
+Spójniki te posiadają nazwy zgodne z ich intuicyjnym znaczeniem, jednak do ich semantyki wrócimy szczegółowo za chwilę. Istotna jest aksjomatyka dotycząca ich wzajemnych relacji. Przypomina ona trochę klasyczne prawa De Morgana dla kwantyfikatorów: 
+
+\begin{enumerate}
+	\item Zdanie $Z$ jest niemożliwe wtedy i tylko wtedy, gdy musi być nieprawdziwe:
+	\begin{equation} \label{eq:de-morgan1}
+	\neg \left( \diamondsuit Z \right) \Leftrightarrow \Box \left( \neg Z \right)
+	\end{equation}
+	\item Zdanie $Z$ jest niekonieczne, wtedy i tylko wtedy, gdy może być nieprawdziwe:
+	\begin{equation} \label{eq:de-morgan2}
+	\neg \left( \Box Z \right) \Leftrightarrow \diamondsuit \left( \neg Z \right)
+	\end{equation}
+\end{enumerate}
+
+Wykonując obustronną negację równań \ref{eq:de-morgan1} - \ref{eq:de-morgan2} można je przedstawić w równoważnej formie: 
+
+\begin{enumerate}
+	\item Zdanie $Z$ jest możliwe wtedy i tylko wtedy, gdy nie musi być nieprawdziwe:
+	\begin{equation}
+	\diamondsuit Z \Leftrightarrow \neg \ \Box \left( \neg Z \right)
+	\end{equation}
+	\item Zdanie $Z$ jest konieczne wtedy i tylko wtedy, gdy nie może być nieprawdziwe:
+	\begin{equation}
+	\Box Z \Leftrightarrow \neg \ \diamondsuit \left( \neg Z \right)
+	\end{equation}
+\end{enumerate}
+
+Za pomocą logiki modalnej można wyrażać stwierdzenia charakteryzujące się różnym stopniem pewności: \\ \\ 
+\emph{Jutro nie musi padać. } \\ 
+\emph{Możliwe, że ustawa zostanie uchwalona. } \\ 
+\emph{Z pewnością poniesie on tego konsekwencje} \\ 
+
+Korzystając z równań - aksjomatów \ref{eq:de-morgan1} - \ref{eq:de-morgan2} możemy przekształcić powyższe zdania w ich równoważne formy: \\ \\ 
+\emph{Możliwe, że jutro nie będzie padać. } \\ 
+\emph{Ustawa nie musi zostać nieuchwalona. } \\ 
+\emph{Niemożliwe, żeby nie poniósł on tego konsekwencji. } \\ 
+
+Intuicyjnie łatwo jest zrozumieć semantykę logiki modalnej, można ją jednak bardziej sformalizować, wykorzystując tzw. relację dostępności $\subset_R$. Zakładamy, że dany jest pewien stan rzeczy, tzw. \emph{świat} $S$. Z obecnego stanu rzeczy $S$ moga wyniknąć różne potencjalne możliwości, potencjalne scenariusze rozwoju wydarzeń. Scenariusze $p$, które mogą rozwinąć się ze świata $S$ pozostają z nim w relacji dostępności: $p \subset_R S$. 
 
 
 
