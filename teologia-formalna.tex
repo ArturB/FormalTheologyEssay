@@ -225,7 +225,7 @@ Z tak zdefiniowanych założeń możemy już wyprowadzić kilka interesujących 
 \begin{theorem-g} \label{th:godel1}
 	$P(\varphi) \Rightarrow \diamondsuit \exists x: \varphi(x)$
 \end{theorem-g}
-Dowód twierdzenia \ref{th:godel1} jest wyrafinowany i nie będziemy go tutaj szczegółowo przytaczać. Jego ogólna idea sprowadza się do faktu, że gdy zbiór obiektów, które posiadają własność $\varphi$ jest pusty, to fakt ten okazuje się być sprzeczny z aksjomatem \ref{axiom:godel2}. Wynika to z tego, że zdanie $x \in \emptyset$ jest zawsze fałszywe i można na jego podstawie udowodnić wszystko. Szczegółowa postać dowodu dostępna jest w \todo{Anderson citation}. 
+Dowód twierdzenia \ref{th:godel1} jest wyrafinowany i nie będziemy go tutaj szczegółowo przytaczać. Jego ogólna idea sprowadza się do faktu, że gdy zbiór obiektów, które posiadają własność $\varphi$ jest pusty, to fakt ten okazuje się być sprzeczny z aksjomatem \ref{axiom:godel2}. Wynika to z tego, że zdanie $x \in \emptyset$ jest zawsze fałszywe i można na jego podstawie udowodnić wszystko. Szczegółowa postać dowodu dostępna jest w \cite{Anderson1996}.  
 
 Na podstawie twierdzenia \ref{th:godel1} możemy wykazać, że istnienie Boga jest faktem możliwym:
 \begin{theorem-g} \label{th:godel2}
@@ -246,8 +246,9 @@ Nietrudno zauważyć następujący fakt:
 \begin{corollary}
 	$G(x) \Rightarrow G\ \emph{ess}\ x$
 \end{corollary}
-Bóg z definicji posiada wszystkie możliwe pozytywne cechy, a ponieważ - jak wspomnieliśmy wcześniej - Bóg nie może posiadać żadnej cechy negatywnej, to jego cechy pozytywne są jego wszystkimi cechami. 
-
+\begin{proof}
+	Bóg z definicji posiada wszystkie możliwe pozytywne cechy, a ponieważ - jak wspomnieliśmy wcześniej - Bóg nie może posiadać żadnej cechy negatywnej, to jego cechy pozytywne są jego wszystkimi cechami, a boskość jest jego esencją. 
+\end{proof}
 Przechodzimy teraz do formalizacji kluczowej części dowodu Anzelma: założenia, że obiekt istniejący realnie jest bardziej doskonały od identycznego obiektu, ale istniejącego tylko w ludzkim umyśle. W tym celu potrzebujemy jeszcze jednej definicji:
 \begin{definition-g}
 	Obiekt $x$ istnieje w sposób konieczny $E(x)$, jeśli dla każdej esencji $\psi$ obiektu $x$ istnieje co najmniej jeden obiekt posiadający cechę $\psi$:
@@ -281,6 +282,9 @@ Dowód ontologiczny Gödla wydaje się być formalnie poprawny, ale nie unikną�
 
 
 
-\section{Podsumowanie}
+\section{Perspektywy}
+
+\bibliographystyle{apalike}
+\bibliography{teologia.bib}
 
 \end{document}
