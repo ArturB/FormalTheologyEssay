@@ -133,11 +133,11 @@ Wykonując obustronną negację równań \ref{eq:de-morgan1} - \ref{eq:de-morgan
 
 \begin{enumerate}
 	\item Zdanie $Z$ jest możliwe wtedy i tylko wtedy, gdy nie musi być nieprawdziwe:
-	\begin{equation}
+	\begin{equation} \label{eq:de-morgan3}
 	\diamondsuit Z \Leftrightarrow \neg \ \Box \left( \neg Z \right)
 	\end{equation}
 	\item Zdanie $Z$ jest konieczne wtedy i tylko wtedy, gdy nie może być nieprawdziwe:
-	\begin{equation}
+	\begin{equation} \label{eq:de-morgan4}
 	\Box Z \Leftrightarrow \neg \ \diamondsuit \left( \neg Z \right)
 	\end{equation}
 \end{enumerate}
@@ -147,12 +147,25 @@ Za pomocą logiki modalnej można wyrażać stwierdzenia charakteryzujące się 
 \emph{Możliwe, że ustawa zostanie uchwalona. } \\ 
 \emph{Z pewnością poniesie on tego konsekwencje} \\ 
 
-Korzystając z równań - aksjomatów \ref{eq:de-morgan1} - \ref{eq:de-morgan2} możemy przekształcić powyższe zdania w ich równoważne formy: \\ \\ 
+Korzystając z równań - aksjomatów \ref{eq:de-morgan1} - \ref{eq:de-morgan4} możemy przekształcić powyższe zdania w ich równoważne formy: \\ \\ 
 \emph{Możliwe, że jutro nie będzie padać. } \\ 
 \emph{Ustawa nie musi zostać nieuchwalona. } \\ 
 \emph{Niemożliwe, żeby nie poniósł on tego konsekwencji. } \\ 
 
-Intuicyjnie łatwo jest zrozumieć semantykę logiki modalnej, można ją jednak bardziej sformalizować, wykorzystując tzw. relację dostępności $\subset_R$. Zakładamy, że dany jest pewien stan rzeczy, tzw. \emph{świat} $S$. Z obecnego stanu rzeczy $S$ moga wyniknąć różne potencjalne możliwości, potencjalne scenariusze rozwoju wydarzeń. Scenariusze $p$, które mogą rozwinąć się ze świata $S$ pozostają z nim w relacji dostępności: $p \subset_R S$. 
+Intuicyjnie łatwo jest zrozumieć semantykę logiki modalnej, można ją jednak bardziej sformalizować, wykorzystując tzw. relację dostępności $\subset_R$. Zakładamy, że dany jest pewien stan rzeczy, tzw. \emph{świat} $S$. Z obecnego stanu rzeczy $S$ moga wyniknąć różne potencjalne możliwości, potencjalne scenariusze rozwoju wydarzeń. Scenariusze $p$, które mogą rozwinąć się ze świata $S$ pozostają z nim w relacji dostępności: $p \subset_R S$. Relacja $\subset_R$ nie jest z góry określona w sposób jednoznaczny, jednak gdy jest już dana, można za jej pomocą określić semantykę spójników $\diamondsuit$ i $\Box$:
+\begin{enumerate}
+	\item Zdanie $Z$ jest możliwe w świecie $S$, gdy istnieje co najmniej jeden świat $p \subset_R S$ w którym jest ono prawdziwe:
+	\begin{equation}
+	\diamondsuit Z \Leftrightarrow \exists p: p \subset_R S
+	\end{equation}
+	\item Zdanie $Z$ jest konieczne w świecie $S$, gdy w każdym świecie $p \subset_R S$ jest ono prawdziwe:
+	\begin{equation}
+	\Box Z \Leftrightarrow \forall p: p \subset_R S
+	\end{equation}
+\end{enumerate}
+Z tak zdefiniowanej semantyki spójników modalnych wynika też natychmiast, dlaczego zakłada się, że ich wzajemna relacja ma charakter syntaktycznie zgodny z prawami De Morgana dla kwantyfikatorów. 
+
+Prześledźmy działanie relacji dostępności na przykładzie. 
 
 
 
