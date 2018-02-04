@@ -15,6 +15,7 @@
 \newtheorem{theorem}{Twierdzenie}
 \newtheorem{definition}{Definicja}
 \newtheorem{axiom}{Aksjomat}
+\newtheorem{axiom-g}{Aksjomat}
 
 \title{Od Anzelma do Gödla - dowód ontologiczny a logika modalna.}
 \author{Artur M. Brodzki}
@@ -165,8 +166,41 @@ Intuicyjnie łatwo jest zrozumieć semantykę logiki modalnej, można ją jednak
 \end{enumerate}
 Z tak zdefiniowanej semantyki spójników modalnych wynika też natychmiast, dlaczego zakłada się, że ich wzajemna relacja ma charakter syntaktycznie zgodny z prawami De Morgana dla kwantyfikatorów. 
 
-Prześledźmy działanie relacji dostępności na przykładzie. 
+Prześledźmy działanie relacji dostępności na przykładzie. Niech $S$ oznacza świat w dniu dzisiejszym, powiedzmy, że jest to poniedziałek, a my zastanawiamy się nad jutrzejszą pogodą. Z $S$ mogą wyniknąć różne stany światy we wtorek: ponieważ nie wiemy nic o pogodzie na jutro, zakładamy, że może padać: $p_1 \subset_R S$ jak i być słonecznie $p_2 \subset_R S$. Zatem z $S$ dostępne są co najmniej dwa "światy": \say{pada} $p_1$ i \say{jest słonecznie} $p_2$. Możemy teraz wypowiedzieć się o jutrzejszej pogodzie używając spójników modalnych. Zdanie $Z_1 =$\emph{jutro będzie padać} jest prawdziwe w $p_1$, ale fałszywe w $p_2$, użyjemy tu więc spójnika możliwości: $\diamondsuit Z_1$. To samo dotyczy zdania $Z_2 =$\emph{jutro będzie słonecznie}: $\diamondsuit Z_2$. Możemy jednak nadać inny kształt relacji dostępności. Być może oglądaliśmy prognozę pogody na jutro i wiemy (z - jak zawsze - bardzo dużym stopniem pewności) że we wtorek spadnie 5 mm deszczu. Wtedy z $S$ dostępny jest już tylko świat $p_1$, ale nie $p_2$ i użyte przez nas spójniki modalne muszą się zmienić. Zdanie $Z_1$ jest teraz prawdziwe w każdym $p \subset_R S$ (bo jedynym takim $p$ jest $p_1$), co wypełnia definicję spójnika konieczności: $\Box Z_1$. Z kolei zdanie $Z_2$ nie jest prawdziwe w żadnym $p \subset_R S$, czyli - używając kwantyfikatorów - powiemy, że $\neg\ \exists p \subset_R S: Z_2\ zachodzi\ w\ p$, a słoneczna pogoda jest jutro niemożliwa: $ \neg\ \diamondsuit Z_2$. 
+
+Relacja dostępności, jak każda relacja w sensie matematycznym, może posiadać określone własności, takie jak refleksyjność czy zwrotność. Zależy to od sposobu jej zdefiniowania w konkretnym przypadku; każda nowa postać relacji $\subset_R$ definiuje nową, inną logikę modalną oznaczaną z podaniem własności obowiązującej w niej relacji $\subset_R$. Zazwyczaj wyróżnia się 4 podstawowe typy logik modalnych:
+\begin{itemize}
+	\item Typ T - relacja $\subset_R$ jest refleksyjna: $\forall S: S \subset_R S$ - każdy świat jest dostępny sam z siebie. Refleksyjność gwarantuje, że każdy świat posiada przynajmniej jeden stan rzeczy, który jest z niego dostępny (samego siebie) co ułatwia interpretację kwantyfikatorów, na których oparte są spójniki modalne: rozpatrywanie kwantyfikatorów na zbiorze pustym jest mało intuicyjne i zwykle mało przydatne. W logice typu T można zatem wyróżnić dodatkowy aksjomat: $\Box z \Rightarrow z$. 
+	\item Typ B - relacja $\subset_R$ jest symetryczna: $S_1 \subset_R S_2 \Leftrightarrow S_2 \subset_R S_1$. Warunek ten można wyrazić za pomocą aksjomatu "koniecznej możliwości": $z \Rightarrow \Box \diamondsuit z$. 
+	\item Typ 4 - relacja $\subset_R$ jest przechodnia: $S_1 \subset_R S \wedge S_2 \subset_R S_1 \Rightarrow S_2 \subset_R S$. Takie logiki mogą posłużyć do modelowania łańcucha przyczyn i następstw. Daje nam to aksjomat modalny w formie $\Box z \Rightarrow \Box \Box z$. 
+	\item Typ 5 - relacja $\subset_R$ jest euklidesowa: \\ $S_1 \subset_R S \wedge S_2 \subset_R S \Rightarrow S_1 \subset_R S_2 \wedge S_2 \subset_R S_1$. \\
+	Taka postać relacji dostępności pozwala nam wykorzystywać aksjomat: $\diamondsuit z \Rightarrow \Box \diamondsuit z$: "jeśli coś jest możliwe, to jest koniecznie możliwe". 
+\end{itemize}
+Wymienione powyżej typy logik modalnych i ich aksjomaty były wykorzystywane w dowodzie ontologicznym Gödla jak i jego modyfikacjach i w dowodzeniu jego własności. 
+
+\section{Dowód ontologiczny Gödla} \label{sec:godel-proof}
+
+Poznaliśmy już potrzebne nam podstawy logiki modalnej, możemy więc przeanalizować dowód ontologiczny Gödla w jego pełnej postaci. Zakładamy najpierw - podobnie jak Anzelm - że obiekty $x$ posiadają cechy - predykaty $\varphi(x), \psi(x), \xi(x)$ w sensie logicznym - i że te predykaty dają się opisać jako "pozytywne" $P(\varphi)$ lub "negatywne" (ściślej: nieprawda-że-pozytywne): $\neg P(\psi)$. Wprowadzamy również symboliczne oznaczenie cechy boskości $G: G(x)$ oznacza zatem, że $x$ jest Bogiem. 
+
+Definiujemy teraz kilka aksjomatów dotyczących cech pozytywnych i negatywnych. 
+\begin{axiom-g} \label{axiom:1}
+	Brak dobra jest zły i vice versa: $\neg P(\varphi) \Leftrightarrow P(\neg \varphi)$, równoważnie $P(\varphi) \Leftrightarrow \neg P(\neg \varphi)$
+\end{axiom-g}
+Z aksjomatu \ref{axiom:1} wynika, że każda cecha jest albo pozytywna, albo negatywna: nie może być opcji pośredniej. 
+\begin{axiom-g}
+	Z dobra może wynikać tylko dobro. Dobro nie może pociągać za sobą żadnego zła: $\left( P(\varphi) \wedge \Box \forall x: \varphi(x) \Rightarrow \psi(x) \right) \Rightarrow P(\psi)$
+\end{axiom-g}
+\begin{axiom-g}
+	Cechy dobre są dobre w każdym mozliwym świecie. Dobro jest absolutne: $P(\varphi) \Rightarrow \Box P(\varphi)$
+\end{axiom-g}
+Powyższe aksjomaty oddają intuicje dotyczące cech dobrych i złych, przyjmowane zazwyczaj przez większość ludzi. Ich dość ogólny charakter decyduje o sile dowodu ontologicznego, jednak również o jego słabościach, o czym szczegółowo opowiem w rozdziale \ref{sec:anderson-proof}. 
 
 
+
+
+
+\section{Słabości dowodu i jego modyfikacje} \label{sec:anderson-proof}
+
+\section{Podsumowanie}
 
 \end{document}
