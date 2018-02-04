@@ -16,6 +16,10 @@
 \newtheorem{definition}{Definicja}
 \newtheorem{axiom}{Aksjomat}
 \newtheorem{axiom-g}{Aksjomat}
+\newtheorem{definition-g}{Definicja}
+\newtheorem{theorem-g}{Twierdzenie}
+\newtheorem{lemma}{Lemat}
+\newtheorem{corollary}{Fakt}
 
 \title{Od Anzelma do Gödla - dowód ontologiczny a logika modalna.}
 \author{Artur M. Brodzki}
@@ -183,23 +187,99 @@ Wymienione powyżej typy logik modalnych i ich aksjomaty były wykorzystywane w 
 Poznaliśmy już potrzebne nam podstawy logiki modalnej, możemy więc przeanalizować dowód ontologiczny Gödla w jego pełnej postaci. Zakładamy najpierw - podobnie jak Anzelm - że obiekty $x$ posiadają cechy - predykaty $\varphi(x), \psi(x), \xi(x)$ w sensie logicznym - i że te predykaty dają się opisać jako "pozytywne" $P(\varphi)$ lub "negatywne" (ściślej: nieprawda-że-pozytywne): $\neg P(\psi)$. Wprowadzamy również symboliczne oznaczenie cechy boskości $G: G(x)$ oznacza zatem, że $x$ jest Bogiem. 
 
 Definiujemy teraz kilka aksjomatów dotyczących cech pozytywnych i negatywnych. 
-\begin{axiom-g} \label{axiom:1}
-	Brak dobra jest zły i vice versa: $\neg P(\varphi) \Leftrightarrow P(\neg \varphi)$, równoważnie $P(\varphi) \Leftrightarrow \neg P(\neg \varphi)$
+\begin{axiom-g} \label{axiom:godel1}
+	Brak dobra jest zły i vice versa: 
+	\begin{equation*}
+	\neg P(\varphi) \Leftrightarrow P(\neg \varphi),\ \emph{równoważnie}\ P(\varphi) \Leftrightarrow \neg P(\neg \varphi)
+	\end{equation*}
 \end{axiom-g}
-Z aksjomatu \ref{axiom:1} wynika, że każda cecha jest albo pozytywna, albo negatywna: nie może być opcji pośredniej. 
+Z aksjomatu \ref{axiom:godel1} wynika, że każda cecha jest albo pozytywna, albo negatywna: nie może być opcji pośredniej. 
+\begin{axiom-g} \label{axiom:godel2}
+	Z dobra może wynikać tylko dobro. Dobro nie może pociągać za sobą żadnego zła: 
+	\begin{equation*}
+	\left( P(\varphi) \wedge \Box \forall x: \varphi(x) \Rightarrow \psi(x) \right) \Rightarrow P(\psi)
+	\end{equation*}
+\end{axiom-g}
+\begin{axiom-g} \label{axiom:godel3}
+	Cechy dobre są dobre w każdym możliwym świecie. Dobro jest absolutne:
+	\begin{equation*}
+	P(\varphi) \Rightarrow \Box P(\varphi)
+	\end{equation*}
+\end{axiom-g}
+Powyższe aksjomaty oddają intuicje dotyczące cech dobrych (pozytywnych) i złych (negatywnych), przyjmowane zazwyczaj mniej lub bardziej świadomie przez większość ludzi. Ich dość ogólny charakter decyduje o sile dowodu ontologicznego, jednak również o jego słabościach, o czym szczegółowo opowiem w rozdziale \ref{sec:anderson-proof}. 
+
+Następnie Gödel definiuje pojęcie Boga $G(x)$:
+\begin{definition-g} \label{def:godel1}
+	Bóg to obiekt posiadający wszystkie możliwe cechy pozytywne: 
+	\begin{equation*}
+	G(x) \Leftrightarrow \forall \varphi \left( P(\varphi) \Leftrightarrow \varphi(x) \right)
+	\end{equation*}
+\end{definition-g}
+Mogłoby się wydawać oczywiste, że predykat $G$ jest pozytywny, jednak - zaskakująco - $P(G)$ nie wynika z aksjomatów \ref{axiom:godel1} - \ref{axiom:godel3}. Jest tak dlatego, że $G$ definiuje się poprzez kwantyfikator po predykatach, a zatem $G$ jest predykatem wyższego rzędu (o 1) od pozytywnych cech, które z sobie zawiera. Wprowadzamy zatem
+\begin{axiom-g} \label{axiom:godel4}
+	P(G)
+\end{axiom-g}
+Korzystając z aksjomatu \ref{axiom:godel1} możemy zauważyć, że Bóg nie może posiadać żadnej cechy negatywnej, co nie jest wprost powiedziane w definicji \ref{def:godel1}. Gdyby Bóg posiadał cechę $\psi: \neg P(\psi)$, to z aksjomatu \ref{axiom:godel1} wynika, że $P(\neg \psi)$. Ponieważ $\neg \psi$ jest cechą pozytywną, to Bóg nie posiada cechy $\psi$, co jest sprzeczne z założeniem że ją posiada - a zatem założenie to musi być fałszywe. 
+
+Z tak zdefiniowanych założeń możemy już wyprowadzić kilka interesujących wyników. Przede wszystkim okazuje się, że dla każdej pozytywnej własności $\varphi$ możemy znaleźć przynajmniej jeden obiekt, który tę własność posiada. Mówimy, że każda pozytywna właściwość jest \say{potencjalnie egzemplifikowana} (ang. \emph{possibly exemplified}). 
+\begin{theorem-g} \label{th:godel1}
+	$P(\varphi) \Rightarrow \diamondsuit \exists x: \varphi(x)$
+\end{theorem-g}
+Dowód twierdzenia \ref{th:godel1} jest wyrafinowany i nie będziemy go tutaj szczegółowo przytaczać. Jego ogólna idea sprowadza się do faktu, że gdy zbiór obiektów, które posiadają własność $\varphi$ jest pusty, to fakt ten okazuje się być sprzeczny z aksjomatem \ref{axiom:godel2}. Wynika to z tego, że zdanie $x \in \emptyset$ jest zawsze fałszywe i można na jego podstawie udowodnić wszystko. Szczegółowa postać dowodu dostępna jest w \todo{Anderson citation}. 
+
+Na podstawie twierdzenia \ref{th:godel1} możemy wykazać, że istnienie Boga jest faktem możliwym:
+\begin{theorem-g} \label{th:godel2}
+	$\diamondsuit \exists x: G(x)$
+\end{theorem-g}
+\begin{proof}
+	Ponieważ $P(G)$, to z twierdzenia \ref{th:godel1} natychmiast wynika, że $\diamondsuit \exists x: G(x)$, c.b.d.u.
+\end{proof}
+
+Do dalszych rozważań potrzebujemy jeszcze jednej definicji. Gödel był pod wielkim wrażeniem filozofii Leibniza i uwidacznia się to w jego dowodzie ontologicznym. Definiuje on formalnie pojęcie esencji:
+\begin{definition-g}
+	Predykat $\varphi$ jest \emph{esencją} $x$, gdy wynikają z niego wszystkie własności obiektu $x$:
+	\begin{equation*}
+	\varphi\ \emph{ess}\ x \Leftrightarrow \varphi(x) \wedge \forall \psi: \left( \psi(x) \Rightarrow \Box \forall y: \left( \varphi(y) \Rightarrow \psi(y) \right) \right)
+	\end{equation*}
+\end{definition-g}
+Nietrudno zauważyć następujący fakt:
+\begin{corollary}
+	$G(x) \Rightarrow G\ \emph{ess}\ x$
+\end{corollary}
+Bóg z definicji posiada wszystkie możliwe pozytywne cechy, a ponieważ - jak wspomnieliśmy wcześniej - Bóg nie może posiadać żadnej cechy negatywnej, to jego cechy pozytywne są jego wszystkimi cechami. 
+
+Przechodzimy teraz do formalizacji kluczowej części dowodu Anzelma: założenia, że obiekt istniejący realnie jest bardziej doskonały od identycznego obiektu, ale istniejącego tylko w ludzkim umyśle. W tym celu potrzebujemy jeszcze jednej definicji:
+\begin{definition-g}
+	Obiekt $x$ istnieje w sposób konieczny $E(x)$, jeśli dla każdej esencji $\psi$ obiektu $x$ istnieje co najmniej jeden obiekt posiadający cechę $\psi$:
+	\begin{equation*}
+	E(x) \Leftrightarrow \forall \psi: \left( \psi\ \emph{ess}\ x \Rightarrow\Box\ \exists x: \psi(x) \right)
+	\end{equation*}
+\end{definition-g}
+Zgodnie z rozumowaniem Anzelma, wprowadzamy aksjomat, że \emph{istnienie konieczne} $E$ jest cechą pozytywną:
 \begin{axiom-g}
-	Z dobra może wynikać tylko dobro. Dobro nie może pociągać za sobą żadnego zła: $\left( P(\varphi) \wedge \Box \forall x: \varphi(x) \Rightarrow \psi(x) \right) \Rightarrow P(\psi)$
+	P(E)
 \end{axiom-g}
-\begin{axiom-g}
-	Cechy dobre są dobre w każdym mozliwym świecie. Dobro jest absolutne: $P(\varphi) \Rightarrow \Box P(\varphi)$
-\end{axiom-g}
-Powyższe aksjomaty oddają intuicje dotyczące cech dobrych i złych, przyjmowane zazwyczaj przez większość ludzi. Ich dość ogólny charakter decyduje o sile dowodu ontologicznego, jednak również o jego słabościach, o czym szczegółowo opowiem w rozdziale \ref{sec:anderson-proof}. 
-
-
-
-
+Ponieważ $E(x)$ jest cechą pozytywną, a $G$ jest jedyną esencją Boga, to uzyskujemy natychmiastowy wniosek:
+\begin{theorem-g}
+	$\Box\ \exists x: G(x)$
+\end{theorem-g}
+\begin{proof}
+	Bóg $x: G(x)$ posiada każdą cechę pozytywną, w szczególności zatem zachodzi $E(x)$. Z definicji predykatu $E$ mamy: 
+	\begin{equation*}
+	 \forall \psi: \left( \psi\ \emph{ess}\ x \Rightarrow\Box\ \exists x: \psi(x) \right)
+	\end{equation*}
+	A ponieważ $G\ \emph{ess}\ x$, to:
+	\begin{equation*}
+	\Box\ \exists x: G(x)
+	\end{equation*}
+	c.b.d.u.
+\end{proof}
+Udowodniliśmy, że Bóg istnieje w świecie w sposób konieczny. 
 
 \section{Słabości dowodu i jego modyfikacje} \label{sec:anderson-proof}
+Dowód ontologiczny Gödla wydaje się być formalnie poprawny, ale nie uniknął on licznych problemów. 
+
+
 
 \section{Podsumowanie}
 
