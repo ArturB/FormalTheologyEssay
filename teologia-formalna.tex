@@ -111,9 +111,9 @@ Na bazie podanej przez siebie definicji, daje się już udowodnić twierdzenie o
 	
 Dowód Anzelma, jakkolwiek niezwykle wyrafinowany w formie, spotkał się z krytyką i to niemal natychmiast po opublikowaniu. Najwyżej 5 lat po wydaniu \emph{Proslogionu} \footnote{Gaunilon zmarł w 1083 roku.}, pojawiła się krótka rozprawka Gaunilona, benedyktyna z Marmoutier, zatytułowana \emph{W obronie głupiego}. W rozprawce tej Gaunilon zwraca uwagę na fakt, że korzystając z metody Anzelma udowodnić można niepokojąco wiele i podaje sławny do dziś przykład idealnej wyspy. Jeżeli - jak twierdzi Anzelm - byt istniejący realnie jest z definicji bardziej doskonały od istniejącego w umyśle, to istnieć musi gdzieś na świecie idealna, pozbawiona jakichkolwiek wad wyspa - raj. Taka wyspa posiadać musi bowiem wszystkie możliwe dla wysp przymioty, w szczególności zaś nie może jej brakować Anzelmowskiego przymiotu realnego istnienia. Rozumowanie to można rozciągnąć na bardzo wiele teologicznie niepożądanych bytów: herosów czy konkurujących z chrześcijańskim Bogiem półbogów, którzy nie posiadają wszystkich możliwych zalet, nie brakuje im jednak cechy realnego istnienia. 
 
-Krytyka Gaunilona została powszechnie zaakceptowana a sam dowód ontologiczny był przez scholastykę zazwyczaj odrzucany, a czasem nawet postrzegany jako przejaw pewnej pychy ludzkiego rozumu, który rości sobie prawo do poznania natury i istoty Boga. Niespodziewanie zyskał jednak ponowne zainteresowanie po jego przeformułowaniu przez Kurta Gödla w języku logiki modalnej. Gödlowski dowód pojawia się po raz pierwszy w jego osobistych zapiskach, datowanych na rok 1941, on sam jednak nie wspomniał o nim nikomu aż do 1970 roku. Wspomnienia Oskara Morgensterna sugerują, że Gödel zwlekał z publikowaniem swoich wyników ze względów kulturowych. Prace na ten temat przekazał jednak w 1970 roku Dana Scottowi \footnote{Dana Scott pozostaje znany w środowisku informatyków głównie z prac dotyczących semantyki języków programowania, które posłużyły później w budowie nowoczesnych języków programowania funkcyjnego, a zwłaszcza Haskella} i ostatecznie zostały one opublikowane z 1987 roku, w 9 lat po jego śmierci. 
+Krytyka Gaunilona została powszechnie zaakceptowana a sam dowód ontologiczny był przez scholastykę zazwyczaj odrzucany, a czasem nawet postrzegany jako przejaw pewnej pychy ludzkiego rozumu, który rości sobie prawo do poznania natury i istoty Boga. Niespodziewanie zyskał jednak ponowne zainteresowanie po jego przeformułowaniu przez Kurta Gödla w języku logiki modalnej. Gödlowski dowód pojawia się po raz pierwszy w jego osobistych zapiskach, datowanych na rok 1941, on sam jednak nie wspomniał o nim nikomu aż do 1970 roku. Wspomnienia Oskara Morgensterna sugerują, że Gödel zwlekał z publikowaniem swoich wyników ze względów kulturowych. Prace na ten temat przekazał jednak w 1970 roku Dana Scottowi \footnote{Dana Scott pozostaje znany w środowisku informatyków głównie z prac dotyczących semantyki języków programowania, które posłużyły później w budowie nowoczesnych języków programowania funkcyjnego, a zwłaszcza Haskella} i ostatecznie zostały one opublikowane z 1987 roku, w 9 lat po jego śmierci \cite{godel1995}. 
 
-\section{Logika modalna}
+\section{Logika modalna} \label{sec:modal-logic}
 
 Aby omówić dowód Gödla w szczegółach, musimy jednak najpierw zapoznać się nieco z podstawami logiki modalnej, w której Gödel zapisał swój dowód ontologiczny. Logika modalna należy do logik nieklasycznych, tzn. różni się od rachunku zdań wprowadzonego do europejskiej nauki jeszcze przed Arystotelesa w jego sześciotomowym \emph{Organonie}. Logika modalna wprowadza do rachunku zdań dwa dodatkowe spójniki, tzw. spójniki modalne:
 \begin{enumerate}
@@ -147,15 +147,18 @@ Wykonując obustronną negację równań \ref{eq:de-morgan1} - \ref{eq:de-morgan
 	\end{equation}
 \end{enumerate}
 
-Za pomocą logiki modalnej można wyrażać stwierdzenia charakteryzujące się różnym stopniem pewności: \\ \\ 
-\emph{Jutro nie musi padać. } \\ 
-\emph{Możliwe, że ustawa zostanie uchwalona. } \\ 
-\emph{Z pewnością poniesie on tego konsekwencje} \\ 
-
-Korzystając z równań - aksjomatów \ref{eq:de-morgan1} - \ref{eq:de-morgan4} możemy przekształcić powyższe zdania w ich równoważne formy: \\ \\ 
-\emph{Możliwe, że jutro nie będzie padać. } \\ 
-\emph{Ustawa nie musi zostać nieuchwalona. } \\ 
-\emph{Niemożliwe, żeby nie poniósł on tego konsekwencji. } \\ 
+Za pomocą logiki modalnej można wyrażać stwierdzenia charakteryzujące się różnym stopniem pewności:
+\begin{itemize}
+	\item \emph{Jutro nie musi padać. }
+	\item \emph{Możliwe, że ustawa zostanie uchwalona. }
+	\item \emph{Z pewnością poniesie on tego konsekwencje}
+\end{itemize}
+Korzystając z równań - aksjomatów \ref{eq:de-morgan1} - \ref{eq:de-morgan4} możemy przekształcić powyższe zdania w ich równoważne formy:
+\begin{itemize}
+	\item \emph{Możliwe, że jutro nie będzie padać. }
+	\item \emph{Ustawa nie musi zostać nieuchwalona. }
+	\item \emph{Niemożliwe, żeby nie poniósł on tego konsekwencji. } 
+\end{itemize}
 
 Intuicyjnie łatwo jest zrozumieć semantykę logiki modalnej, można ją jednak bardziej sformalizować, wykorzystując tzw. relację dostępności $\subset_R$. Zakładamy, że dany jest pewien stan rzeczy, tzw. \emph{świat} $S$. Z obecnego stanu rzeczy $S$ moga wyniknąć różne potencjalne możliwości, potencjalne scenariusze rozwoju wydarzeń. Scenariusze $p$, które mogą rozwinąć się ze świata $S$ pozostają z nim w relacji dostępności: $p \subset_R S$. Relacja $\subset_R$ nie jest z góry określona w sposób jednoznaczny, jednak gdy jest już dana, można za jej pomocą określić semantykę spójników $\diamondsuit$ i $\Box$:
 \begin{enumerate}
@@ -225,7 +228,7 @@ Z tak zdefiniowanych założeń możemy już wyprowadzić kilka interesujących 
 \begin{theorem-g} \label{th:godel1}
 	$P(\varphi) \Rightarrow \diamondsuit \exists x: \varphi(x)$
 \end{theorem-g}
-Dowód twierdzenia \ref{th:godel1} jest wyrafinowany i nie będziemy go tutaj szczegółowo przytaczać. Jego ogólna idea sprowadza się do faktu, że gdy zbiór obiektów, które posiadają własność $\varphi$ jest pusty, to fakt ten okazuje się być sprzeczny z aksjomatem \ref{axiom:godel2}. Wynika to z tego, że zdanie $x \in \emptyset$ jest zawsze fałszywe i można na jego podstawie udowodnić wszystko. Szczegółowa postać dowodu dostępna jest w \cite{Anderson1996}.  
+Dowód twierdzenia \ref{th:godel1} jest wyrafinowany i nie będziemy go tutaj szczegółowo przytaczać. Jego ogólna idea sprowadza się do faktu, że gdy zbiór obiektów, które posiadają własność $\varphi$ jest pusty, to fakt ten okazuje się być sprzeczny z aksjomatem \ref{axiom:godel2}. Wynika to z tego, że zdanie $x \in \emptyset$ jest zawsze fałszywe i można na jego podstawie udowodnić wszystko. Szczegółowa postać dowodu dostępna jest w \cite{Anderson1990}.  
 
 Na podstawie twierdzenia \ref{th:godel1} możemy wykazać, że istnienie Boga jest faktem możliwym:
 \begin{theorem-g} \label{th:godel2}
@@ -278,8 +281,15 @@ Ponieważ $E(x)$ jest cechą pozytywną, a $G$ jest jedyną esencją Boga, to uz
 Udowodniliśmy, że Bóg istnieje w świecie w sposób konieczny. 
 
 \section{Słabości dowodu i jego modyfikacje} \label{sec:anderson-proof}
-Dowód ontologiczny Gödla wydaje się być formalnie poprawny, ale nie uniknął on licznych problemów. 
+Dowód ontologiczny Gödla wydaje się być formalnie poprawny, ale nie uniknął on licznych problemów. Pojawiają się zarzuty zarówno natury interpretacyjnej, jak i czysto formalnej. 
 
+Gödel, w przeciwieństwie do Anzelma, nie czyni rozróżnienia na istnienie realne oraz w ludzkim umyśle. Uwidacznia się tutaj wspomniana we wstępie kwestia językowa - nie jest jasne, co tak naprawdę oznacza kwantyfikator $\exists$. Do twierdzenia Gödla można stosować zarzut o dowodzeniu istnienia Boga jako idei matematycznej. Dowód Gödla mówi o Bogu, nie precyzuje jednak wprost jego cech - nie ma więc pewności, jakiego Boga rozpatruje się w dowodzie ontologicznym. 
+
+Wiąże się z tym również kwestia dość ogólnej aksjomatyzacji pojęcia cech pozytywnych i negatywnych. Istnieje wiele możliwych sposobów przypisania konkretnym cechom rzeczywistych obiektów predykatu $P$ i każde z nich może spełniać aksjomaty \ref{axiom:godel1} - \ref{axiom:godel3}. Często klasyfikacja pewnych zjawisk jako pozytywnych lub negatywnych jest wśród ludzi kontrowersyjna. Boga której religii dowodzi więc dowód Gödla? A może każdemu wartościowaniu odpowiada osobny byt, reprezentujący Boga w danym, określonym systemie wartości? Twierdzenie nie pozwala uniknąć tej wieloznaczności. 
+
+Przede wszystkim jednak dowód w wersji podanej w rozdziale \ref{sec:godel-proof} okazuje się być podatny na obiekcje typu Gaunilona - identyczne rozumowanie można zastosować do dowodzenia istnienia właściwie każdego możliwego bytu. W istocie prawdziwa jest mocniejsza hipoteza: zestaw aksjomatów \ref{axiom:godel1} - \ref{axiom:godel3} jest wewnętrznie sprzeczny; prowadzi on do zjawiska tzw. modalnego kolapsu, a na jego bazie można udowodnić wszystko. Po raz pierwszy sugestię o niespójności Gödlowskich aksjomatów wysunął Jordan Sobel w 1987 roku \cite{sobel1987}. Ostatecznie hipotezę Sobela udowodniono w 2016 z wykorzystaniem komputerowego wspomagania dowodzenia twierdzeń \cite{Benzmuller2016}; z aksjomatów  \ref{axiom:godel1} - \ref{axiom:godel3} wyprowadzono zdanie $\diamondsuit\ \Box\ \bot$ (możliwe, że konieczny jest fałsz). Wyniki Bezmüllera to jeden z najbardziej spektakularnych przykładów zastosowania sztucznej inteligencji do zagadnień metafizycznych; zmuszają jednak one do modyfikacji oryginalnej wersji dowodu Gödla. 
+
+Okazuje się, że aby uniknąć problemów typu Gaunilona, wystarczy zmodyfikować aksjomat \ref{axiom:godel1}. 
 
 
 \section{Perspektywy}

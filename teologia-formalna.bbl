@@ -1,8 +1,26 @@
 \begin{thebibliography}{}
 
-\bibitem[Anderson, 1996]{Anderson1996}
-Anderson, Curtis Anthony;~Geettings, M. (1996).
-\newblock Gödel's ontological proof revisited.
-\newblock {\em Lecture Notes in Logic}, pages 167--172.
+\bibitem[Anderson, 1990]{Anderson1990}
+Anderson, C.~A. (1990).
+\newblock Some emendations of gödel's ontological proof.
+\newblock {\em Faith and Philosophy}, pages 291--303.
+
+\bibitem[Benzmüller, 2016]{Benzmuller2016}
+Benzmüller, Christoph; Woltzenlogel-Paleo, B. (2016).
+\newblock The inconsistency in gödel's ontological argument - a success story
+  for ai on metaphysics.
+\newblock {\em AAAI Press}, pages 936--942.
+
+\bibitem[Gödel, 1995]{godel1995}
+Gödel, K. (1995).
+\newblock Texts relating to the ontological proof.
+\newblock In {\em Unpublished Essays and Lectures}, pages 429--437. Oxford
+  University Press, Oxford.
+
+\bibitem[Sobel, 1987]{sobel1987}
+Sobel, J. (1987).
+\newblock Gödel's ontological proof.
+\newblock In {\em On Being and Saying: Essays for Richard Catwright}, pages
+  241--261. MIT Press, Oxford/MA & London.
 
 \end{thebibliography}
